@@ -1,26 +1,24 @@
-//your JS code here. If required.
 const submitBtn = document.getElementById("submit");
-const gameDiv = document.getElementById("game");
 const message = document.querySelector(".message");
+const boardDiv = document.getElementById("board");
 const cells = document.querySelectorAll(".cell");
 
 let player1 = "";
 let player2 = "";
 let currentPlayer = "";
-let turn = "X";
+let turn = "x";
 let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
 
 // Start Game
 submitBtn.onclick = () => {
 
-  player1 = document.getElementById("player-1").value;
-  player2 = document.getElementById("player-2").value;
+  player1 = document.getElementById("player1").value;
+  player2 = document.getElementById("player2").value;
 
   if (!player1 || !player2) return;
 
-  document.getElementById("input-section").style.display = "none";
-  gameDiv.style.display = "block";
+  boardDiv.style.display = "grid";
 
   currentPlayer = player1;
   message.textContent = `${currentPlayer}, you're up`;
@@ -42,12 +40,12 @@ cells.forEach((cell, index) => {
       return;
     }
 
-    // Switch Player
-    if (turn === "X") {
-      turn = "O";
+    // Switch turn
+    if (turn === "x") {
+      turn = "o";
       currentPlayer = player2;
     } else {
-      turn = "X";
+      turn = "x";
       currentPlayer = player1;
     }
 
@@ -60,12 +58,10 @@ cells.forEach((cell, index) => {
 function checkWin() {
 
   const wins = [
-    [0,1,2], [3,4,5], [6,7,8],
-    [0,3,6], [1,4,7], [2,5,8],
-    [0,4,8], [2,4,6]
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
   ];
 
-  return wins.some(combo => {
-    return combo.every(i => board[i] === turn);
-  });
+  return wins.some(combo => combo.every(i => board[i] === turn));
 }

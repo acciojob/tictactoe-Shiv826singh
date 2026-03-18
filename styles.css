@@ -1,11 +1,6 @@
-/*  your css code here. If applicable */
 body {
-  font-family: Arial;
   text-align: center;
-}
-
-.container {
-  margin-top: 40px;
+  font-family: Arial;
 }
 
 #board {
@@ -23,11 +18,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: pink;
   cursor: pointer;
-  background-color: #f4a6b7;
-}
-
-.message {
-  font-size: 20px;
-  margin-top: 10px;
 }

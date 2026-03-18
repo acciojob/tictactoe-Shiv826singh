@@ -24,7 +24,7 @@ submitBtn.onclick = () => {
   message.textContent = `${currentPlayer}, you're up`;
 };
 
-// Cell Click
+// Handle Cell Clicks
 cells.forEach((cell, index) => {
 
   cell.addEventListener("click", () => {
@@ -34,8 +34,9 @@ cells.forEach((cell, index) => {
     board[index] = turn;
     cell.textContent = turn;
 
+    // Check win
     if (checkWin()) {
-      message.textContent = `${currentPlayer}, congratulations you won!`;
+      message.textContent = `${currentPlayer} congratulations you won!`;
       gameOver = true;
       return;
     }
@@ -63,5 +64,7 @@ function checkWin() {
     [0,4,8],[2,4,6]
   ];
 
-  return wins.some(combo => combo.every(i => board[i] === turn));
+  return wins.some(combo =>
+    combo.every(i => board[i] === turn)
+  );
 }
